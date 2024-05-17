@@ -1,0 +1,45 @@
+
+  
+.example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Defines two equal-width columns */
+    grid-template-rows: auto; /* Adjusts row height based on content */
+    gap: 10px; /* Adds space between grid items */
+  }
+
+.title {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+
+.flex-box {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    display: flex;
+    border-bottom: 1px solid #000;
+    align-items: center;
+}
+
+.password-output {
+    flex-grow: 8;
+}
+
+.password-generator-button-container {
+    min-width: 0;
+}
