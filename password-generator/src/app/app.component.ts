@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
@@ -6,14 +6,19 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
+import {
+  MatSnackBar,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, MatButtonModule, MatDividerModule, MatIconModule, MatSliderModule, MatInputModule],
+  imports: [RouterOutlet, FormsModule, MatButtonModule, MatDividerModule, MatIconModule, MatSliderModule, MatInputModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
+
 export class AppComponent {
   title = 'password-generator';
   password = "";
@@ -24,6 +29,8 @@ export class AppComponent {
   step = 1;
   thumbLabel = false;
   value = 16;
+
+  constructor(private _snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.onPasswordRetrieval();
@@ -44,6 +51,15 @@ export class AppComponent {
 
   async onPasswordCopy() {
     await navigator.clipboard.writeText(this.password);
+    this.openSnackBar();
+  }
+
+  openSnackBar() {
+    this._snackBar.open('Copied to clipboard.', 'Dimiss', {
+      horizontalPosition: "end",
+      verticalPosition: "bottom",
+      duration: 3000
+    });
   }
 
 
