@@ -16,7 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class AppComponent {
   title = 'password-generator';
-  password = "Click the button to generate a password :)";
+  password = "";
   disabled = false;
   max = 32;
   min = 1;
@@ -26,7 +26,7 @@ export class AppComponent {
   value = 16;
 
   ngOnInit() {
-    // ...
+    this.onPasswordRetrieval();
   }
 
   async getPassword(): Promise<string> {
@@ -38,8 +38,12 @@ export class AppComponent {
     return data.message; // Assuming the response is text-based
   }
 
-  testFunction() {
+  onPasswordRetrieval() {
     this.getPassword().then(password => this.password = password).catch(console.error);
+  }
+
+  async onPasswordCopy() {
+    await navigator.clipboard.writeText(this.password);
   }
 
 

@@ -87,7 +87,7 @@
           </div>
   
           <div class="password-generator-button-container">
-            <button (click)="testFunction()" mat-flat-button color="primary" style="float: right; top: 50%;">Generate</button>
+            <button (click)="onPasswordRetrieval()" mat-flat-button color="primary" style="float: right; top: 50%;">Generate</button>
           </div>
 
         </div>
@@ -102,12 +102,16 @@
           [step]="step"
           [discrete]="thumbLabel"
           [showTickMarks]="showTicks"
-          (input)="testFunction()">
+          (input)="onPasswordRetrieval()">
             <input matSliderThumb [(ngModel)]="value" #slider>
           </mat-slider>
 
           <p style="margin-top: 0;">Length ({{value}})</p>
           
+        </div>
+
+        <div class="copy-password-button-container">
+          <button (click)="onPasswordCopy()" mat-flat-button color="primary" style="width: 100%;">Copy Password</button>
         </div>
 
       </div>
