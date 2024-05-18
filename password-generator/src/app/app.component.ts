@@ -19,18 +19,18 @@ export class AppComponent {
   password = "Click the button to generate a password :)";
   disabled = false;
   max = 32;
-  min = 0;
+  min = 1;
   showTicks = false;
   step = 1;
   thumbLabel = false;
-  value = 0;
+  value = 16;
 
   ngOnInit() {
     // ...
   }
 
   async getPassword(): Promise<string> {
-    const response = await fetch('https://go-password-generator.azurewebsites.net/api/getPassword');
+    const response = await fetch(`https://go-password-generator.azurewebsites.net/api/getPassword?passwordLength=${this.value}`);
     if (!response.ok) {
       throw new Error(`HTTP error status: ${response.status}`);
     }

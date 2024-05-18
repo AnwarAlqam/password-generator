@@ -92,6 +92,7 @@
 
         </div>
 
+        
         <div class="password-length-slider-container">
           <mat-slider
           class="password-slider"
@@ -100,12 +101,14 @@
           [min]="min"
           [step]="step"
           [discrete]="thumbLabel"
-          [showTickMarks]="showTicks">
+          [showTickMarks]="showTicks"
+          (input)="testFunction()">
             <input matSliderThumb [(ngModel)]="value" #slider>
           </mat-slider>
-        </div>
 
-        {{value}}
+          <p style="margin-top: 0;">Length ({{value}})</p>
+          
+        </div>
 
       </div>
   </div>
